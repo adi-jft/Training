@@ -9,7 +9,7 @@ Array.prototype.cube=function cube(n)
     return this;
 }
 
-console.log(Array.prototype.cube(2));
+// console.log(Array.prototype.cube(2));
 
 // let res=Array.prototype.cube(b);
 // console.log(res);
@@ -17,3 +17,27 @@ console.log(Array.prototype.cube(2));
 let arr=[1,2,3];
 
 console.log(arr.cube());
+
+Array.prototype.search=function search(n){
+    
+    let flag=0;
+
+    for(let i=0; i<this.length; i++)
+    {
+        if(this[i]==n)
+        {
+            flag=1;
+            break;
+        }
+    }
+
+    if(flag==1)
+    {
+        console.log("Successful!!!");
+    }
+    else{
+        console.log("UNsuccessful!!!");
+    }
+}
+
+console.log(arr.search(27));
