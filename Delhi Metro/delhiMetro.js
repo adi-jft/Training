@@ -9,7 +9,7 @@ function calculate()
     let final=cost(num,mode.value);
     let paymode=mode.value;
 
-    amt.innerText=`Final Price ₹:${final}`;
+    amt.innerText=`Final Price: ₹${final}`;
 }
 
 function cost(n, paymode)
