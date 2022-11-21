@@ -7,7 +7,6 @@ function calculate()
 {
     let num=Math.abs(from.value-to.value)+1;
     let final=cost(num,mode.value);
-    let paymode=mode.value;
 
     amt.innerText=`Final Price: ₹${final}`;
 }
