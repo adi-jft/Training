@@ -48,7 +48,7 @@ function cost(n, paymode)
     else{
         if(paymode=="card")
         {
-            res=res-(res*0.1);
+            res-=(res*0.1);
             if(res>60)
             {
                 res=60;
