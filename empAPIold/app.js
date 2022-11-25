@@ -11,19 +11,11 @@ btn.addEventListener("click", ()=>{
         let nobj=getObject();
         api.put(nobj, listData);
         btn.innerHTML="Add";
-        clearData();
     }
     else{
         addData();
-        clearData();
     }
 });
-
-function clearData(){
-    ename.value="";
-    ejob.value="";
-    esalary.value="";
-}
 
 function getObject(){
     let eobj={

@@ -1,6 +1,6 @@
 function employee(){
     this.emparr=[];
-    
+
     this.post=(obj, disp)=>{
         setTimeout(()=>{
             this.emparr.push(obj);
