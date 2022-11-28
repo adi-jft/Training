@@ -6,12 +6,18 @@ let btn=document.getElementById("btn");
 let cnt=0;
 let currId=0;
 
-btn.addEventListener("click", ()=>{
+btn.addEventListener("click", async ()=>{
     if(btn.innerHTML=="Save"){
         let nobj=getObject();
-        api.put(nobj, listData);
-        btn.innerHTML="Add";
-        clearData();
+        let p=await api.put(nobj);
+        try{
+            listData(p);
+            btn.innerHTML="Add";
+            clearData();
+        }
+        catch(err){
+            console.log(err);
+        }      
     }
     else{
         addData();
@@ -45,23 +51,41 @@ function getData(){
     return empobj;
 };
 
-function addData(){
+async function addData(){
     let obj=getData();
-    api.post(obj, listData);
+    let p=await api.post(obj);
+    try{
+        listData(p);
+    }
+    catch(err){
+        console.log(err);
+    }
 };
 
-function remData(empid){
-    api.delete(empid, listData);
+async function remData(empid){
+    console.log(empid);
+    let p=await api.delete(empid);
+    try{
+        listData(p);
+    }
+    catch(err){
+        console.log(err);
+    }
 };
 
-function editData(empid){
-    api.get((arr)=>{
+async function editData(empid){
+    let p=await api.get();
+    try{
     btn.innerHTML="Save";
-    currId = arr[empid].id;
-    ename.value=arr[empid].name;
-    ejob.value=arr[empid].job;
-    esalary.value=arr[empid].salary;
-    }); 
+    let index=p.findIndex((e)=> e.id==empid);
+    currId = p[index].id;
+    ename.value=p[index].name;
+    ejob.value=p[index].job;
+    esalary.value=p[index].salary;
+    }
+    catch(err){
+        console.log(err);
+    }
 };
 
 function listData(arr){

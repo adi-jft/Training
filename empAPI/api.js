@@ -1,6 +1,6 @@
 function employee(){
     this.emparr=[];
-    
+
     this.post=(obj, disp)=>{
         setTimeout(()=>{
             this.emparr.push(obj);
@@ -18,9 +18,10 @@ function employee(){
 
     this.put=(obj, disp)=>{
         setTimeout(()=>{
-            this.emparr[obj.id].name=obj.name;
-            this.emparr[obj.id].job=obj.job;
-            this.emparr[obj.id].salary=obj.salary;
+            let ind=this.emparr.findIndex((e)=> e.id==obj.id);
+            this.emparr[ind].name=obj.name;
+            this.emparr[ind].job=obj.job;
+            this.emparr[ind].salary=obj.salary;
             disp(this.emparr);
         }, 2000);
         console.log(obj);

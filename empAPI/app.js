@@ -49,10 +49,11 @@ function remData(empid){
 function editData(empid){
     api.get((arr)=>{
     btn.innerHTML="Save";
-    currId = arr[empid].id;
-    ename.value=arr[empid].name;
-    ejob.value=arr[empid].job;
-    esalary.value=arr[empid].salary;
+    let index=arr.findIndex((e)=> e.id==empid);
+    currId = arr[index].id;
+    ename.value=arr[index].name;
+    ejob.value=arr[index].job;
+    esalary.value=arr[index].salary;
     }); 
 };
 
