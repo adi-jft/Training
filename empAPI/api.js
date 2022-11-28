@@ -24,7 +24,7 @@ function employee(){
             this.emparr[ind].salary=obj.salary;
             disp(this.emparr);
         }, 2000);
-        console.log(obj);
+        console.log(this.emparr);
     };
 
     this.delete=(eid, disp)=>{

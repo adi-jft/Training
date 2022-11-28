@@ -31,7 +31,7 @@ function employee(){
                 this.emparr[ind].salary=obj.salary;
                 resolve(this.emparr);
             }, 2000);
-            console.log(obj);
+            console.log(this.emparr);
         });
         return p;
     };
