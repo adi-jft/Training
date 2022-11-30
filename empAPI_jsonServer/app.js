@@ -80,12 +80,12 @@ $(`#emptable`).on("click", ".btn" ,function (){
     if(this.order=="asc"){
       this.order="desc";
       emparr.sort((a, b)=> a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1);
-      text="&#9660";
+      text="&#9650";
     }
     else{
       this.order="asc";
       emparr.sort((a, b)=> a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
-      text="&#9650";
+      text="&#9660";
     }
   }
 
@@ -93,12 +93,12 @@ $(`#emptable`).on("click", ".btn" ,function (){
     if(this.order=="asc"){
       this.order="desc";
       emparr.sort((a, b)=> a.job.toLowerCase() < b.job.toLowerCase() ? 1 : -1);
-      text="&#9660";
+      text="&#9650";
     }
     else{
       this.order="asc";
       emparr.sort((a, b)=> a.job.toLowerCase() > b.job.toLowerCase() ? 1 : -1);
-      text="&#9650";
+      text="&#9660";
     }
   }
 
@@ -106,12 +106,12 @@ $(`#emptable`).on("click", ".btn" ,function (){
     if(this.order=="asc"){
       this.order="desc";
       emparr.sort((a, b)=> Number(a.salary) < Number(b.salary) ? 1 : -1);
-      text="&#9660";
+      text="&#9650";
     }
     else{
       this.order="asc";
       emparr.sort((a, b)=> Number(a.salary) > Number(b.salary) ? 1 : -1);
-      text="&#9650";
+      text="&#9660";
     }
   }
   $(this).html(text);
