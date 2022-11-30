@@ -3,18 +3,36 @@ let ename = document.getElementById("name");
 let ejob = document.getElementById("job");
 let esalary = document.getElementById("salary");
 let btn = document.getElementById("btn");
+let arr = JSON.parse(localStorage.getItem("obj")) || [];
 let cnt = 0;
+
+if (arr.length > 0) {
+  cnt = arr[arr.length - 1].id;
+}
 let currId = 0;
 
-btn.addEventListener("click", () => {
+btn.addEventListener("click", async () => {
   if (btn.innerHTML == "Save") {
     let nobj = getObject();
-    api.put(nobj, listData);
-    btn.innerHTML = "Add";
+    let p = await api.put(nobj);
+    try {
+      listData(p);
+      btn.innerHTML = "Add";
+      clearData();
+    } catch (err) {
+      console.log(err);
+    }
   } else {
     addData();
+    clearData();
   }
 });
+
+function clearData() {
+  ename.value = "";
+  ejob.value = "";
+  esalary.value = "";
+}
 
 function getObject() {
   let eobj = {
@@ -28,7 +46,7 @@ function getObject() {
 
 function getData() {
   let empobj = {
-    id: cnt++,
+    id: ++cnt,
     name: ename.value,
     job: ejob.value,
     salary: esalary.value,
@@ -36,24 +54,38 @@ function getData() {
   return empobj;
 }
 
-function addData() {
+async function addData() {
   let obj = getData();
-  api.post(obj, listData);
+  let p = await api.post(obj);
+  try {
+    listData(p);
+  } catch (err) {
+    console.log(err);
+  }
 }
 
-function remData(empid) {
-  api.delete(empid, listData);
+async function remData(empid) {
+  console.log(empid);
+  let p = await api.delete(empid);
+  try {
+    listData(p);
+  } catch (err) {
+    console.log(err);
+  }
 }
 
-function editData(empid) {
-  api.get((arr) => {
+async function editData(empid) {
+  let p = await api.get();
+  try {
     btn.innerHTML = "Save";
-    let index = arr.findIndex((e) => e.id == empid);
-    currId = arr[index].id;
-    ename.value = arr[index].name;
-    ejob.value = arr[index].job;
-    esalary.value = arr[index].salary;
-  });
+    let index = p.findIndex((e) => e.id == empid);
+    currId = p[index].id;
+    ename.value = p[index].name;
+    ejob.value = p[index].job;
+    esalary.value = p[index].salary;
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 function listData(arr) {
