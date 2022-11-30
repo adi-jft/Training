@@ -62,12 +62,14 @@ $(`#search`).on("click", function(){
         return e;
       }
     });
-    
+
     if(flag==1){
       display(empfilter);
+      clear();
     }
     else{
       alert("Employee Not Found!");
+      clear();
     }
   }
 });
