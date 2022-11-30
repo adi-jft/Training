@@ -193,8 +193,8 @@ function display(arr){
         <td>${e.job}</td>
         <td>${e.salary}</td>
         <td>
-            <button class="btn btn-outline-secondary" onclick="edit(${e.id})">Edit</button>
-            <button class="btn btn-outline-secondary" onclick="del(${e.id})">Delete</button>
+            <button class="btn btn-warning" onclick="edit(${e.id})">Edit</button>
+            <button class="btn btn-danger" onclick="del(${e.id})">Delete</button>
         </td>
         </tr>`;
     $("#tbody").append(row);
