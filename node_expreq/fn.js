@@ -1,4 +1,4 @@
-module.exports = function search(arr, n){
+function search(arr, n){
     let flag=0;
     for(let i=0; i<arr.length; i++){
         if(arr[i]==n){
@@ -13,4 +13,18 @@ module.exports = function search(arr, n){
     else{
         console.log("Search UNsuccessful!");
     }
+};
+
+let a="hello";
+
+let obj={
+    name: "aditya",
+    job: "sde",
+    company: "jft"
+};
+
+module.exports={
+    search,
+    a,
+    obj
 };
