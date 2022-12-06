@@ -15,6 +15,7 @@ $("#btn").click(async ()=>{
     }
     else{
       let obj={
+        id: emparr.length+1,
         name: $("#name").val(),
         job: $("#job").val(),
         salary: $("#salary").val()
@@ -22,9 +23,9 @@ $("#btn").click(async ()=>{
       console.log(obj);
   
       let request = $.ajax({
-        url: `http://localhost:3000/employees`,
+        url: `http://localhost:3000/employees/post`,
         method: "POST",
-        data: obj
+        data: JSON.stringify(obj)
       });
   
       request.done(function(req){
@@ -34,7 +35,6 @@ $("#btn").click(async ()=>{
       request.fail(function(req){
         alert("Request failed "+req);
       });
-      
       get();
       clear();
     }
@@ -168,7 +168,7 @@ async function get() {
 
 async function del(emp){
   let request = $.ajax({
-    url: `http://localhost:3000/employees/${emp}`,
+    url: `http://localhost:3000/employees/delete?id=${emp}`,
     method: "DELETE"
   });
 
@@ -199,9 +199,9 @@ async function save(emp){
   };
 
   let request = $.ajax({
-    url: `http://localhost:3000/employees/${emp}`,
+    url: `http://localhost:3000/employees/put?id=${emp}`,
     method: "PUT",
-    data: obj
+    data: JSON.stringify(obj)
   });
 
   request.done(function(req){
