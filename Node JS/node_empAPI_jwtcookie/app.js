@@ -1,9 +1,9 @@
 let emparr = [];
 let currId;
 
-if(sessionStorage.getItem("key")==null){
-  window.open("./login.html","_self");
-}
+// if(document.cookie==null){
+//   window.open("./login.html","_self");
+// }
 
 get();
 function clear(){
@@ -30,9 +30,9 @@ $("#btn").click(async ()=>{
         url: `http://localhost:3000/employees/post`,
         method: "POST",
         data: obj,
-        headers: {
-          "authorization": "Bearer " + sessionStorage.getItem("key")
-        }
+        // headers: {
+        //   "authorization": "Bearer " + sessionStorage.getItem("key")
+        // }
       });
   
       request.done(function(req){
@@ -161,9 +161,9 @@ async function get() {
   let request = $.ajax({
     url: `http://localhost:3000/employees`,
     method: "GET",
-    headers: {
-      "authorization": "Bearer " + sessionStorage.getItem("key")
-    }
+    // headers: {
+    //   "authorization": "Bearer " + sessionStorage.getItem("key")
+    // }
   });
 
   request.done(function (req){
@@ -180,9 +180,9 @@ async function del(emp){
   let request = $.ajax({
     url: `http://localhost:3000/employees/delete/${emp}`,
     method: "DELETE",
-    headers: {
-      "authorization": "Bearer " + sessionStorage.getItem("key")
-    }
+    // headers: {
+    //   "authorization": "Bearer " + sessionStorage.getItem("key")
+    // }
   });
 
   request.done(function(req){
@@ -215,9 +215,9 @@ async function save(emp){
     url: `http://localhost:3000/employees/put/${emp}`,
     method: "PUT",
     data: obj,
-    headers: {
-      "authorization": "Bearer " + sessionStorage.getItem("key")
-    }
+    // headers: {
+    //   "authorization": "Bearer " + sessionStorage.getItem("key")
+    // }
   });
 
   request.done(function(req){
