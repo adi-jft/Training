@@ -9,7 +9,164 @@
     <link rel="icon" href="#">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
   </head>
-  <body background="https://99designs-blog.imgix.net/blog/wp-content/uploads/2018/06/BUILD-GREAT-CORPORATE-DESIGN.jpg?auto=format&q=60&w=1860&h=1090&fit=crop&crop=faces">
+  <style>
+    .css {
+    margin:.5rem ;
+    width: 100px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: blue;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+  }
+.css:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+.css:active {
+    color: #000
+}
+.css:active:after {
+    background: transparent;
+}
+.css:hover:before {
+    opacity: 1;
+}
+.css:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* background: #111; */
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+#edtbtn {
+    margin:.5rem ;
+    width: 150px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: darkviolet;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+#edtbtn:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+#edtbtn:active {
+    color: #000
+}
+#edtbtn:active:after {
+    background: transparent;
+}
+#edtbtn:hover:before {
+    opacity: 1;
+}
+#edtbtn:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* background: #111; */
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+#dltbtn {
+    margin:.5rem ;
+    width: 150px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: firebrick;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+#dltbtn:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+#dltbtn:active {
+    color: #000
+}
+#dltbtn:active:after {
+    background: transparent;
+}
+#dltbtn:hover:before {
+    opacity: 1;
+}
+#dltbtn:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* background: #111; */
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+  }
+  </style>
+  <body background="https://wallpaperaccess.com/full/15166.jpg" style="background-size:cover">
       <p><h1 align="center">Employee Details</h1></p>
       <div class="container">
         <form action="/employees/post" method="post">
@@ -27,22 +184,22 @@
           </p>
           <p>
               <% if(flag==true){ %>
-                <button type="submit" class="btn btn-primary" formaction="/employees/save">Save</button>
+                <button type="submit" class="btn btn-primary css" formaction="/employees/save">Save</button>
               <% } else{ %>
-                <button type="submit" class="btn btn-primary ">Add</button>
+                <button type="submit" class="btn btn-primary css">Add</button>
               <% } %>
-              <button type="submit" class="btn btn-primary" formaction="/employees/search">Search</button>
+              <button type="submit" class="btn btn-primary css" formaction="/employees/search">Search</button>
           </p>
         </form>
       </div>
       <div class="container">
-        <table id="emptable" class="table table-bordered table-light">
+        <table id="emptable" class="table table-bordered table-light table-striped text-center" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
           <thead class="table-dark">
             <tr>
               <th>Name <button class="btn btn-light btn-sm" value="name" order="asc" >&#9650</button></th>
               <th>Job <button class="btn btn-light btn-sm" value="job" order="asc" >&#9650</button></th>
               <th>Salary <button class="btn btn-light btn-sm" value="salary" order="asc" >&#9650</button></th>
-              <th>Actions</th>
+              <th style="width: 350px">Actions</th>
             </tr>
           </thead>
           <tbody id="tbody">
@@ -53,10 +210,10 @@
                 <td><%= e.salary %></td>
                 <td style="display: flex;">
                   <form action="/employees/edit/<%= e.id %>" method="post">
-                    <button type="submit" class="btn btn-warning">Edit</button>
+                    <button type="submit" class="btn" id="edtbtn">Edit</button>
                   </form>
                   <form action="/employees/delete/<%= e.id %>" method="post">
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger" id="dltbtn">Delete</button>
                   </form>
                 </td>
               </tr>
