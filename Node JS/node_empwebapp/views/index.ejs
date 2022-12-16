@@ -167,7 +167,14 @@
   }
   </style>
   <body background="https://wallpaperaccess.com/full/15166.jpg" style="background-size:cover">
-      <p><h1 align="center">Employee Details</h1></p>
+      <div>
+        <form id="logout" action="/logout" method="post" align="right">
+          <button class="btn btn-dark" type="submit">logout</button>
+        </form>
+        <p>
+          <h1 align="center">Employee Details</h1>
+        </p>
+      </div>
       <div class="container">
         <form action="/employees/post" method="post">
           <p>
@@ -279,10 +286,10 @@ function display(arr){
         <td>${e.job}</td>
         <td>${e.salary}</td>
         <td style="display: flex;">
-                  <form action="/employees/edit/${e.id}" method="post">
+                  <form action="/employees/edit/${e._id}" method="post">
                     <button type="submit" class="btn" id="edtbtn">Edit</button>
                   </form>
-                  <form action="/employees/delete/${e.id}" method="post">
+                  <form action="/employees/delete/${e._id}" method="post">
                     <button type="submit" class="btn btn-danger" id="dltbtn">Delete</button>
                   </form>
           </td>

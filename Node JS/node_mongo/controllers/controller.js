@@ -28,7 +28,6 @@ module.exports = {
   },
 
   jwt: (req, res) => {
-    console.log(req.body);
     let token = jwt.sign(req.body, process.env.SECRET_KEY);
     res.cookie("key", token);
     res.redirect("/employees");
