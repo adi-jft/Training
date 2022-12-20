@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const cookieParser=require("cookie-parser");
+require("dotenv").config();
 const app = express();
 const bodyParser = require("body-parser");
 const db = require("./models/model");
@@ -17,10 +18,10 @@ db();
 const routes = require("./routes/router");
 app.use("/", routes);
 
-app.listen(3000, async(err) => {
+app.listen(process.env.PORT || 3000, async(err) => {
   if (err) {
     console.log(err);
   } else {
-    console.log("server is running on port: 3000");
+    console.log("server is running on port: ", process.env.PORT);
   }
 });
